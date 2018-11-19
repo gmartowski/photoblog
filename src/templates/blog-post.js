@@ -1,18 +1,19 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
+import Layout from '../components/layout'
 
 export default function Template({ data }) {
   const post = data.markdownRemark
 
   return (
-    <div>
+    <Layout>
       <Link to="/blog">Go back</Link>
       <hr />
       <h1>{post.frontmatter.title}</h1>
       <div>Posted by {post.frontmatter.author}</div>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-    </div>
+    </Layout>
   )
 }
 
