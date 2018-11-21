@@ -8,7 +8,7 @@ export default function Template({ data }) {
 
   return (
     <Layout>
-      <Link to="/blog">Go back</Link>
+      <Link to="/">Go back</Link>
       <hr />
       <h1>{post.frontmatter.title}</h1>
       <div>Posted by {post.frontmatter.author}</div>

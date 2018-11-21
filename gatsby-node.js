@@ -1,4 +1,5 @@
 const path = require('path')
+const createPaginatedPages = require('gatsby-paginate')
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators
