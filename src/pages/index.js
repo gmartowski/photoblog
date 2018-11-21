@@ -3,21 +3,42 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
-import { styled } from 'styled'
+import { createGlobalStyle } from 'styled-components'
+import { Heading } from '../components/heading'
+import styled from 'styled-components'
 
-const styleSlugImage = styled.
+const GlobalStyle = createGlobalStyle`
 
-export const Index = ({ data }) => {
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin:0;
+  padding:0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+`
+
+const SlugImage = styled(Img)`
+  max-width: 100px;
+`;
+
+const Index = ({ data }) => {
   return (
     <Layout>
-      <h1>this is blogpage</h1>
+      <Heading>Mój blog o fotografii cyfrowej</Heading>
       {
         data.allMarkdownRemark.edges.map((post) => (
             <div key={post.node.id}>
+              <GlobalStyle />
               <h1>{post.node.frontmatter.title}</h1>
               <div>{post.node.frontmatter.date}</div>
               <div>{post.node.frontmatter.author}</div>
-              <Img sizes={post.node.frontmatter.image.childImageSharp.sizes} />
+              <SlugImage sizes={post.node.frontmatter.slug.childImageSharp.sizes} />
               <Link to={post.node.frontmatter.path}>Read More</Link>
             </div>
           ),
@@ -40,7 +61,14 @@ query BlogIndexQuery {
           author
           image {
                 childImageSharp{
-                    sizes(maxWidth: 630) {
+                    sizes(maxWidth: 100) {
+                        ...GatsbyImageSharpSizes
+                    }
+                }
+            }
+            slug {
+                childImageSharp{
+                    sizes(maxWidth: 100) {
                         ...GatsbyImageSharpSizes
                     }
                 }
