@@ -46,7 +46,7 @@ exports.createPages = ({ actions, graphql }) => {
     createPaginatedPages({
       edges: response.data.allMarkdownRemark.edges,
       createPage: createPage,
-      pageTemplate: 'src/templates/posts.js',
+      pageTemplate: 'src/templates/blog-post.js',
       pageLength: 3,
       pathPrefix: "posts",
     })
@@ -58,5 +58,4 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
   })
-
 }

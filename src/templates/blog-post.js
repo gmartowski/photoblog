@@ -5,7 +5,6 @@ import Layout from '../components/layout'
 
 export default function Template({ data }) {
   const post = data.markdownRemark
-  console.log(post)
   return (
     <Layout>
       <Link to="/">Go back</Link>
